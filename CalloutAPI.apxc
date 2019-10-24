@@ -1,0 +1,24 @@
+public class CalloutAPI {
+     Http http = new Http();
+     HttpRequest request = new HttpRequest();
+     request.setEndpoint('https://postman-echo.com/get?foo1=bar1&foo2=bar2');
+     request.setMethod('GET');
+     HttpResponse response = http.send(request);
+     String strResp = '';
+     system.debug('response'+response.getStatusCode());
+     system.debug('response'+response.getBody());
+      
+    // If the request is successful, parse the JSON response.
+     if (response.getStatusCode() == 200)
+        {
+           
+           Map<String, object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+           Map<string, object> value = (map<string,object>) results.get('args');
+           System.debug('Received the following value from API' + value );
+           strResp = string.valueof(value.get('foo1'));
+           System.debug('strResp >>>>>>' + strResp );
+           strResp = string.valueof(value.get('foo2'));
+           System.debug('strResp >>>>>>' + strResp );
+        }
+    return value;
+}

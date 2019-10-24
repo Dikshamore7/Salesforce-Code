@@ -1,0 +1,10 @@
+public class GetAccounRecords {
+
+   @AuraEnabled
+   public static map<String,List<sObject>> getRecord(){
+   Map<String,List<sObject>> Mymap = new Map<String,List<sObject>>();
+   List<Account> acclist= [select id, name from Account order by createdDate DESC Limit 10];
+   Mymap.put('RecentAccounts',acclist);
+   return Mymap;
+	}
+}

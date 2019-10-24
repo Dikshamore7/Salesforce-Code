@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global"
+                Controller="GetAccounRecords">
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <aura:attribute name="Rec" type="Map" />
+ 
+ 
+  <li>Recent Created Accounts </li>
+    
+   <ul>
+      <aura:iteration items="{!v.Rec.RecentAccounts}" var="acc">
+         <li>AccountName : {!acc.Name}</li>
+         <hr/>
+      </aura:iteration>
+   </ul>
+
+</aura:component>
